@@ -70,3 +70,9 @@ CORS configured in the backend for frontend access
 Build artifacts and IDE-specific files are excluded using .gitignore
 
 The repository contains only the source code and the configuration required to run the project
+
+## Deployment
+
+Frontend: (Netlify) – https://citta-ai-task-1.netlify.app/users
+
+Backend: (Render) – https://citta-task-1.onrender.com/

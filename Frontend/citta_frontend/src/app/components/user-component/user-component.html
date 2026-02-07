@@ -1,0 +1,15 @@
+<h2>Users</h2>
+
+<div *ngIf="loading">Loading...</div>
+
+<app-table-component
+  *ngIf="!loading"
+  [rows]="users"
+  [page]="query.page"
+  [pageSize]="query.pageSize"
+  [totalCount]="totalCount"
+  [sortBy]="query.sortBy"
+  [sortOrder]="query.sortOrder"
+  (pageChange)="onPageChange($event)"
+  (sortChange)="onSortChange($event.sortBy, $event.sortOrder)"
+></app-table-component>

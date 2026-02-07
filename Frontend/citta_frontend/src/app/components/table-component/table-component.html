@@ -1,0 +1,23 @@
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th (click)="changeSort('name')">Name</th>
+      <th (click)="changeSort('email')">Email</th>
+      <th (click)="changeSort('age')">Age</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of rows">
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.age }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div style="margin-top: 10px">
+  <button (click)="prev()" [disabled]="page === 1">Previous</button>
+  <span> Page {{ page }} of {{ totalPages }} </span>
+  <button (click)="next()" [disabled]="page === totalPages">Next</button>
+</div>

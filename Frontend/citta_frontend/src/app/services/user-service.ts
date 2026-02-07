@@ -9,7 +9,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
-  private readonly API_URL = 'http://localhost:8080/api/users';
+  // private readonly API_URL = 'http://localhost:8080/api/users';
+  private baseUrl = `${environment.apiUrl}/api/users`;
 
   constructor(private http: HttpClient) {}
 
@@ -24,6 +25,6 @@ export class UserService {
         .set('sortOrder', query.sortOrder || 'asc');
     }
 
-    return this.http.get<PageResponse<User>>(this.API_URL, { params });
+    return this.http.get<PageResponse<User>>(this.baseUrl, { params });
   }
 }

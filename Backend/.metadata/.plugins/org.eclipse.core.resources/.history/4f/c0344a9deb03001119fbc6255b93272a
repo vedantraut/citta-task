@@ -1,7 +1,0 @@
-package com.citta.ctta_backend.dto;
-
-@Data
-@AllArgsConstructor
-public class PageResponse {
-
-}

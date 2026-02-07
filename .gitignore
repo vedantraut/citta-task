@@ -14,6 +14,12 @@ target/
 .vscode/
 *.iml
 
+# Eclipse
+.metadata/
+.classpath
+.project
+.settings/
+
 # ---------- OS ----------
 .DS_Store
 Thumbs.db

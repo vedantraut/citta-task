@@ -1,5 +1,0 @@
-package com.citta.ctta_backend.dto;
-
-public class PageResponse {
-
-}

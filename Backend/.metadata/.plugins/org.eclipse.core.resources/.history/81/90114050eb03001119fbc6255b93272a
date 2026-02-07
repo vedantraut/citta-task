@@ -1,0 +1,5 @@
+package com.citta.ctta_backend.controller;
+
+public class UserController {
+
+}

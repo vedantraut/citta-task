@@ -1,0 +1,11 @@
+package com.citta.ctta_backend.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class PageResponse {
+	private List<T> rows;
+    private long totalCount;
+}

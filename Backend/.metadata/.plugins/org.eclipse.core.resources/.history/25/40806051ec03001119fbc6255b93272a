@@ -1,0 +1,63 @@
+package com.citta.ctta_backend.service;
+
+import java.util.Comparator;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.citta.ctta_backend.dto.PageResponse;
+import com.citta.ctta_backend.model.User;
+import com.citta.ctta_backend.util.MockDataGenerator;
+
+
+@Service
+public class UserService {
+	
+	private final List<User> users = MockDataGenerator.generateUsers(150);
+
+	public PageResponse<User> fetchUsers(int page, int pageSize, String sortBy, String sortOrder) {
+		 simulateDelay();
+		 
+		 // Sorting
+        List<User> processed = users.stream()
+                .sorted(getComparator(sortBy, sortOrder))
+                .toList();
+        
+        
+        // Pagination
+        int start = (page - 1) * pageSize;
+        int end = Math.min(start + pageSize, processed.size());
+
+        List<User> pagedData = processed.subList(start, end);
+
+        return new PageResponse<>(pagedData, users.size());
+	}
+	
+	private Comparator<User> getComparator(String sortBy, String sortOrder) {
+        if (sortBy == null || sortBy.isEmpty()) {
+            return Comparator.comparing(User::getId);
+        }
+
+        Comparator<User> comparator = switch (sortBy) {
+            case "name" -> Comparator.comparing(User::getName);
+            case "email" -> Comparator.comparing(User::getEmail);
+            case "age" -> Comparator.comparing(User::getAge);
+            default -> Comparator.comparing(User::getId);
+        };
+
+        if ("desc".equalsIgnoreCase(sortOrder)) {
+            comparator = comparator.reversed();
+        }
+
+        return comparator;
+    }
+	
+	private void simulateDelay() {
+        try {
+            Thread.sleep(800);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+}

@@ -1,0 +1,6 @@
+package com.citta.ctta_backend.controller;
+
+@RestController
+public class UserController {
+
+}

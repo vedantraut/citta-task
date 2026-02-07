@@ -1,0 +1,34 @@
+package com.citta.ctta_backend.controller;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.citta.ctta_backend.dto.PageResponse;
+import com.citta.ctta_backend.model.User;
+import com.citta.ctta_backend.service.UserService;
+
+@RestController
+@RequestMapping("/api/users")
+@CrossOrigin
+public class UserController {
+	
+	private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping
+    public PageResponse<User> getUsers(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int pageSize,
+            @RequestParam(required = false) String sortBy,
+            @RequestParam(required = false) String sortOrder
+    ) {
+        return userService.fetchUsers(page, pageSize, sortBy, sortOrder);
+    }
+
+}

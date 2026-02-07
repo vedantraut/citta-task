@@ -1,0 +1,15 @@
+package com.citta.ctta_backend.service;
+
+import org.springframework.stereotype.Service;
+
+
+
+@Service
+public class UserService {
+
+	public PageResponse<User> fetchUsers(int page, int pageSize, String sortBy, String sortOrder) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
